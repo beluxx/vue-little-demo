@@ -3,6 +3,8 @@ import App from './App.vue'
 
 import SimpleVueValidation from 'simple-vue-validator'
 
+import moment from "moment"
+
 
 // 表单验证 不好用
 // import VeeValidate from 'vee-validate'
@@ -40,6 +42,10 @@ Vue.use(SimpleVueValidation)
 
 Vue.config.productionTip = false
 Vue.prototype.$validator = SimpleVueValidation.Validator
+
+Vue.filter('diff_for_human', datetime => {
+  return moment(datetime).fromNow();
+})
 
 new Vue({
   render: h => h(App),

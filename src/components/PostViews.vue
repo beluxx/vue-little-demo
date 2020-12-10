@@ -13,7 +13,10 @@
         <ListItem v-for="post in posts" :key="post.id" :url="post.url">{{ post.title }}</ListItem>
       </template>
       <template v-else>
-        <CardItem v-for="post in posts" :key="post.id" :url="post.url">{{ post.title }}</CardItem>
+        <CardItem v-for="post in posts" :key="post.id" :post="post">
+          <template #title>{{ post.title }}</template>
+          <template #action-label>点击查看</template>
+        </CardItem>
       </template>
     </ListSection>
   </div>
@@ -51,10 +54,10 @@ export default {
         // for (let p in this.posts) {
         //   console.log(p);
         // }
-        this.posts.forEach(p => {
-          //   console.log(p);
-          //   console.log(p.title); // 这就需要后端出来的json数据经过Marshal处理
-        });
+        // this.posts.forEach(p => {
+        //   //   console.log(p);
+        //   //   console.log(p.title); // 这就需要后端出来的json数据经过Marshal处理
+        // });
       })
       .catch(error => {
         console.log("从服务器加载文章失败, ", error);
