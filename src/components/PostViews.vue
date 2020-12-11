@@ -47,7 +47,7 @@ export default {
   },
   mounted() {
     this.axios
-      .get("api/post")
+      .get("api/posts")
       .then(response => {
         // console.log("Get Posts Data = ", response.data.posts);
         this.posts = response.data.posts;

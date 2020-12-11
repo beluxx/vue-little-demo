@@ -35,7 +35,7 @@
               />
             </svg>
             <svg
-              v-show="post.status === 0"
+              v-show="post.status === false"
               width="1em"
               height="1em"
               viewBox="0 0 16 16"
@@ -54,7 +54,7 @@
             </svg>
             <!-- 本地组件过滤器 -->
             <!-- {{ post.status ? '草稿' : '已发布' }} -->
-            {{ post.status ? '草稿' : '已发布' }}
+            {{ post.status | status_human_readable}}
           </small>
           <small class="text-muted">
             <svg
