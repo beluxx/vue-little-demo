@@ -1,15 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import routes from './route/routes'
+import VueRouter from 'vue-router'
+
 import SimpleVueValidation from 'simple-vue-validator'
 
 import moment from "moment"
-
-
-// 表单验证 不好用
-// import VeeValidate from 'vee-validate'
-// import zh_CN from 'vee-validate/dist/locale/zh_CN'
-// import VueI18n from 'vue-i18n'
 
 import "bootstrap"
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -20,23 +17,7 @@ import VueAxios from "vue-axios"  // 引入vue的axios封装器
 Vue.use(VueAxios, axios)
 // axios.defaults.baseURL = '/api' // 解决跨域问题： 设置默认的url地址
 
-// 自定义的错误处理类
-// import utils from "@/utils"
-
-// // 启用国际化插件
-// Vue.use(VueI18n)
-
-// // 配置表单验证
-// const i18n = new VueI18n({
-//   locale: 'zh_CN',
-// })
-// Vue.use(VeeValidate, {
-//   i18n,
-//   i18nRootKey: 'validation',
-//   dictionary: {
-//     zh_CN
-//   }
-// })
+Vue.use(VueRouter)
 
 Vue.use(SimpleVueValidation)
 
@@ -49,4 +30,6 @@ Vue.filter('diff_for_human', datetime => {
 
 new Vue({
   render: h => h(App),
+
+  router: new VueRouter(routes)
 }).$mount('#app')

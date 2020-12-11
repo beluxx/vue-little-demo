@@ -1,65 +1,26 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <!-- 路由匹配到的组件将渲染在这里 -->
+    <router-view></router-view>
+
     <hr />
 
-    <!-- <button
-      type="button"
-      class="btn btn-primary"
-      data-toggle="modal"
-      data-target="#exampleModal"
-    >模态框</button>-->
-    <!-- 模态框 -->
-    <!-- 主体内容 -->
-    <!-- <ModalExample> -->
-    <!-- 具名的slot -->
-    <!-- <template v-slot:header></template> -->
-    <!-- 不具名的slot，绑定slot的数据 -->
-    <!-- <template v-slot:default="bodyProps">
-        {{ bodyProps.language.name }}
-        <span v-if="bodyProps.language.name === 'PHP'">☑️</span>
-    </template>-->
-    <!-- </ModalExample> -->
+    <!-- 使用 router-link 组件来导航 -->
+    <!-- 通过传入 `to` 属性指定链接 -->
+    <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+    <router-link to="/">Home</router-link>
+    <router-link to="/about">About</router-link>
 
-    <!-- 从根App传递给组件，使用props来实现 -->
-    <!-- <FormExample :username="username"></FormExample> -->
-
-    <!-- 重构form组件，使用复用子组件来构建form -->
-    <!-- <PostForm :username="username"></PostForm> -->
-
-    <!-- 视图组件 -->
-    <PostsViews></PostsViews>
+    <!-- 传递路由参数到命名路由 -->
+    <router-link :to="{ name: 'category', params: { language: 'php' }}">PHP</router-link>
+    <router-link :to="{ name: 'category', params: { language: 'golang' }}">Golang</router-link>
+    <router-link :to="{ name: 'category', params: { language: 'javascript' }}">Javascript</router-link>
   </div>
 </template>
 
 <script>
-// import HelloWorld from "./components/HelloWorld.vue";
-// import ModalExample from "./components/ModalExample.vue";
-// import FormExample from "./components/FormComponent.vue";
-// import PostForm from "./components/PostForm.vue";
-import PostsViews from "./components/PostViews";
-
 export default {
-  name: "App",
-  components: {
-    // HelloWorld,
-    // ModalExample,
-    // FormExample,
-    // PostForm
-    PostsViews
-  },
-  data() {
-    return {
-      title: "Vue Study Example -- Component",
-      username: "123", // 试试如果是整数，会提示警告。不会报错，这感觉不算是强制
-      languages: [
-        { id: 1, name: "PHP" },
-        { id: 2, name: "JavaScript" },
-        { id: 3, name: "Golang" }
-      ]
-    };
-  }
+  name: "App"
 };
 </script>
 
@@ -68,7 +29,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
   margin-top: 60px;
 }
